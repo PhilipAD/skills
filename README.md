@@ -1,7 +1,7 @@
 # Open Skillkit
 
 <p align="center">
-  <img src="assets/banner.png" alt="Open Skillkit banner" width="1200" />
+  <img src="https://raw.githubusercontent.com/PhilipAD/open-skillkit/main/assets/banner.png" alt="Open Skillkit banner" width="1200" />
 </p>
 
 OSS **[Cursor skills](https://cursor.com/docs/context/skills)** — each folder under `skills/` is a `SKILL.md` the agent uses when the task fits its `description`.
