@@ -17,7 +17,7 @@ More skills can be added under `skills/<name>/SKILL.md` (see **Contributing**).
 Cursor loads skills from **`~/.cursor/skills/<skill-name>/SKILL.md`** ([docs](https://cursor.com/docs/context/skills)).
 
 ```bash
-git clone https://github.com/<you>/open-skillkit.git
+git clone https://github.com/PhilipAD/open-skillkit.git
 cp -r open-skillkit/skills/* ~/.cursor/skills/
 # restart Cursor
 ```
@@ -60,10 +60,10 @@ Useful for one-off chats or sharing with someone who doesn’t want files on dis
 1. **@ reference in Cursor chat**  
    Add the file: `@skills/hetzner-ubuntu-gui-server/SKILL.md` (if the repo is open), or `@` → attach the file from disk.
 
-2. **Paste a raw GitHub URL** (after you publish the repo)  
-   Example pattern:  
-   `https://raw.githubusercontent.com/<you>/open-skillkit/main/skills/hetzner-ubuntu-gui-server/SKILL.md`  
-   Ask the agent: *“Follow the instructions in this skill:”* and paste the URL. The agent should fetch or you attach the downloaded file.
+2. **Paste a raw GitHub URL**  
+   Hetzner / Ubuntu GUI skill (always `main`):  
+   [raw `SKILL.md`](https://raw.githubusercontent.com/PhilipAD/open-skillkit/main/skills/hetzner-ubuntu-gui-server/SKILL.md)  
+   Ask the agent: *“Follow the instructions in this skill:”* and paste that URL (or download and **@** attach the file).
 
 3. **Explicit instruction**  
    *“Read and follow `SKILL.md` in this repo under `skills/hetzner-ubuntu-gui-server/`.”*
