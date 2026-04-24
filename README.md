@@ -1,103 +1,50 @@
 # Open Skillkit
 
-Portable **[Cursor Agent Skills](https://cursor.com/docs/context/skills)** (`SKILL.md` bundles) shared as open source. Each skill is a small playbook the agent reads when a task matches its `description`.
+<p align="center">
+  <img src="assets/banner.png" alt="Open Skillkit banner" width="1200" />
+</p>
 
-## Skill catalog
+OSS **[Cursor skills](https://cursor.com/docs/context/skills)** — each folder under `skills/` is a `SKILL.md` the agent uses when the task fits its `description`.
 
-| Skill | What it does |
-|-------|----------------|
-| [**hetzner-ubuntu-gui-server**](skills/hetzner-ubuntu-gui-server/SKILL.md) | Hetzner / Ubuntu headless GUI: TigerVNC, SSH, UFW, zram (`linux-modules-extra` on 24.04), GNOME tuning, xrdp removal, rescue passwords, DevOps handoff patterns. |
+| Skill | Summary |
+|-------|---------|
+| [hetzner-ubuntu-gui-server](skills/hetzner-ubuntu-gui-server/SKILL.md) | Hetzner Ubuntu + TigerVNC, SSH, UFW, zram (24.04 extras), GNOME tweaks, xrdp cleanup, rescue / handoff. |
 
-More skills can be added under `skills/<name>/SKILL.md` (see **Contributing**).
+## Install
 
-## Install (pick one)
-
-### A. Copy into global Cursor skills (recommended)
-
-Cursor loads skills from **`~/.cursor/skills/<skill-name>/SKILL.md`** ([docs](https://cursor.com/docs/context/skills)).
+Skills load from **`~/.cursor/skills/<name>/SKILL.md`** or **`.cursor/skills/`** in a project.
 
 ```bash
 git clone https://github.com/PhilipAD/open-skillkit.git
-cp -r open-skillkit/skills/* ~/.cursor/skills/
-# restart Cursor
+cp -r open-skillkit/skills/* ~/.cursor/skills/   # then restart Cursor
 ```
 
-### B. One skill only
+One skill, symlink, or script:
 
 ```bash
-mkdir -p ~/.cursor/skills/hetzner-ubuntu-gui-server
 cp open-skillkit/skills/hetzner-ubuntu-gui-server/SKILL.md ~/.cursor/skills/hetzner-ubuntu-gui-server/
-```
-
-### C. Project-only (commit in your repo)
-
-```bash
-mkdir -p .cursor/skills
-cp -r open-skillkit/skills/hetzner-ubuntu-gui-server .cursor/skills/
-```
-
-### D. Symlink (stay synced with `git pull`)
-
-```bash
 ln -s "$(pwd)/open-skillkit/skills/hetzner-ubuntu-gui-server" ~/.cursor/skills/hetzner-ubuntu-gui-server
+./open-skillkit/scripts/install-to-cursor.sh
 ```
 
-### E. Cursor “Remote Rule (GitHub)”
-
-Some teams pin repo-wide rules via **Settings → Rules → Add Rule → Remote Rule (GitHub)** ([docs](https://cursor.com/docs/context/skills)). That path targets **rules** workflows; **skills** are still standard `SKILL.md` trees. Prefer **A–D** for skills unless Cursor’s UI explicitly imports your layout—when in doubt, use **copy** or **symlink**.
-
-### F. `install.sh` (copy all skills)
-
-```bash
-./scripts/install-to-cursor.sh        # default: ~/.cursor/skills
-CURSOR_SKILLS_DIR=/path ./scripts/install-to-cursor.sh
-```
+*(“Remote Rule (GitHub)” in Cursor is for rules workflows; for skills, copy/symlink is the straightforward path.)*
 
 ## Point your AI at a skill (no install)
 
 Useful for one-off chats or sharing with someone who doesn’t want files on disk yet:
 
-1. **@ reference in Cursor chat**  
-   Add the file: `@skills/hetzner-ubuntu-gui-server/SKILL.md` (if the repo is open), or `@` → attach the file from disk.
+**@ reference in Cursor chat**  
+Add the file: `@skills/hetzner-ubuntu-gui-server/SKILL.md` (if the repo is open), or **@** → attach the file from disk.
 
-2. **Paste a raw GitHub URL**  
-   Hetzner / Ubuntu GUI skill (always `main`):  
-   [raw `SKILL.md`](https://raw.githubusercontent.com/PhilipAD/open-skillkit/main/skills/hetzner-ubuntu-gui-server/SKILL.md)  
-   Ask the agent: *“Follow the instructions in this skill:”* and paste that URL (or download and **@** attach the file).
+**Paste a raw GitHub URL**  
+Hetzner / Ubuntu GUI skill (branch `main`): [raw `SKILL.md`](https://raw.githubusercontent.com/PhilipAD/open-skillkit/main/skills/hetzner-ubuntu-gui-server/SKILL.md)  
+Ask the agent: *“Follow the instructions in this skill:”* and paste that URL (or download and **@** attach the file).
 
-3. **Explicit instruction**  
-   *“Read and follow `SKILL.md` in this repo under `skills/hetzner-ubuntu-gui-server/`.”*
+**Explicit instruction**  
+*“Read and follow `SKILL.md` in this repo under `skills/hetzner-ubuntu-gui-server/`.”*
 
-Discovered skills (in `~/.cursor/skills` or `.cursor/skills`) are injected automatically when the agent judges the `description` relevant; **@** / URL is for forcing context.
+Skills under `~/.cursor/skills` or `.cursor/skills` are picked up automatically when the agent thinks the `description` fits; **@** / URL forces the context.
 
-## Layout
+## Add a skill
 
-```
-open-skillkit/
-├── README.md                 # this file
-├── LICENSE
-├── scripts/
-│   └── install-to-cursor.sh
-└── skills/
-    └── <skill-name>/
-        └── SKILL.md          # YAML frontmatter: name, description
-```
-
-Each `SKILL.md` must start with:
-
-```yaml
----
-name: kebab-case-name
-description: Third-person WHAT and WHEN (helps the agent decide to apply it).
----
-```
-
-## Contributing
-
-1. Add `skills/<new-skill>/SKILL.md`.
-2. Add a row to the **Skill catalog** in this README.
-3. Keep each skill focused; link extra detail from `reference.md` in the same folder if needed.
-
-## License
-
-MIT — see [LICENSE](LICENSE).
+New folder: `skills/<name>/SKILL.md` with YAML frontmatter (`name`, `description` — third person, **what + when**). Add a row to the table above. MIT — [LICENSE](LICENSE).
