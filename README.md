@@ -1,7 +1,7 @@
-# Open Skillkit
+# Skills
 
 <p align="center">
-  <img src="assets/banner.png" alt="OPEN SKILLKIT — Open Skillkit banner" width="1200" />
+  <img src="assets/banner.png" alt="SKILLS — Portable Cursor Agent SKILL.md pack" width="1200" />
 </p>
 
 > **Weave the unseen. Layer the infinite. Illuminate with elegance.**
@@ -20,11 +20,11 @@
 ## Install
 
 ```bash
-git clone https://github.com/PhilipAD/open-skillkit.git
-./open-skillkit/scripts/install-to-cursor.sh   # or: cp -r open-skillkit/skills/* ~/.cursor/skills/
+git clone https://github.com/PhilipAD/skills.git
+./scripts/install-to-cursor.sh   # or: cp -r skills/* ~/.cursor/skills/
 ```
 
-Restart Cursor. One skill: `ln -s "$(pwd)/open-skillkit/skills/<name>" ~/.cursor/skills/<name>`
+Restart Cursor. One skill: `ln -s "$(pwd)/skills/<name>" ~/.cursor/skills/<name>`
 
 ## Without installing
 

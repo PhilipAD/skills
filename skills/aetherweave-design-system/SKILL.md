@@ -4,7 +4,7 @@ description: >-
   Applies the Aetherweave design system — Black Bleak Modern Extremism edition —
   (obsidian tokens, dark liquid glass, monochromatic typography, motion, accessibility,
   components) to UI, CSS, content, and design artifacts. Use when the user mentions
-  Aetherweave, open-skillkit design.md, dark luxury extremism, --aw-* tokens, liquid
+  Aetherweave, skills design.md, dark luxury extremism, --aw-* tokens, liquid
   void glass, black mono abstract UI, or asks for branding consistent with this
   repository's spec.
 ---
